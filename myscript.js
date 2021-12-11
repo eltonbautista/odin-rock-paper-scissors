@@ -66,9 +66,27 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-const playerSelection = "SCISSOR".toLowerCase(); // I only used lowercase strings in all of my input and output of 'rock', 'paper', 'scissor' so I just needed to make sure my input here is all lowercase.
+let playerSelection = prompt('Please enter your battle sign: Rock, Paper, or Scissor');
+    if (playerSelection.toLowerCase() == 'rock') {
+        playerSelection = 'rock';
+    } else if (playerSelection.toLowerCase() == 'paper') {
+        playerSelection = 'paper';
+    } else if (playerSelection.toLowerCase() == 'scissor') {
+        playerSelection = 'scissor';
+    }
+//const playerSelection = "rock".toLowerCase(); // I only used lowercase strings in all of my input and output of 'rock', 'paper', 'scissor' so I just needed to make sure my input here is all lowercase.
 const computerSelection = computerPlay();
-console.log(playRound(playerSelection,computerSelection));
+let playRounds = playRound(playerSelection, computerSelection);
+console.log(playRounds);
+
+
+
 // Display a message declaring who the winner of the round is. Done.
 
 // Create a new function called game() where we can run the RPS game 5 times and have it keep track of the score and declare a winner at the end.
+/*function game() {
+    console.log(playRounds);
+}
+console.log(game()); */
+
+
