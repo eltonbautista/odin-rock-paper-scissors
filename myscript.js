@@ -39,11 +39,21 @@ function computerPlay() {
         return ('scissor');
     } 
 } 
-
+function playerPlay() {
+    let userInput = prompt('Please enter your battle sign: Rock, Paper, or Scissor');
+        if (userInput.toLowerCase() == 'rock') {
+            return'rock';
+        } else if (userInput.toLowerCase() == 'paper') {
+            return'paper';
+        } else if (userInput.toLowerCase() == 'scissor') {
+            return'scissor';
+        }
+    }
 //Have the user's input go against the computer's random choice and decide on a winner, this will be done through a function called playRound(),
 //which will have two paramaters: playerSelection and computerSelection. Done, now I have to make playerSelection case insensitive.
 
 function playRound(playerSelection, computerSelection) {
+
     switch(true) {
         case (playerSelection == 'rock' && computerSelection == 'scissor'):
         return('Rock beats Scissor! You win!');
@@ -66,27 +76,24 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-let playerSelection = prompt('Please enter your battle sign: Rock, Paper, or Scissor');
-    if (playerSelection.toLowerCase() == 'rock') {
-        playerSelection = 'rock';
-    } else if (playerSelection.toLowerCase() == 'paper') {
-        playerSelection = 'paper';
-    } else if (playerSelection.toLowerCase() == 'scissor') {
-        playerSelection = 'scissor';
-    }
 //const playerSelection = "rock".toLowerCase(); // I only used lowercase strings in all of my input and output of 'rock', 'paper', 'scissor' so I just needed to make sure my input here is all lowercase.
-const computerSelection = computerPlay();
-let playRounds = playRound(playerSelection, computerSelection);
-console.log(playRounds);
+console.log(playRound(playerPlay(), computerPlay()));
+console.log(playRound(playerPlay(), computerPlay()));
 
 
-
+/*function playSingleRound() {
+    console.log(playRounds);
+}
+let playSingle = playSingleRound(); */
 // Display a message declaring who the winner of the round is. Done.
 
 // Create a new function called game() where we can run the RPS game 5 times and have it keep track of the score and declare a winner at the end.
-/*function game() {
-    console.log(playRounds);
+/*
+function game() {
+    
 }
-console.log(game()); */
+game();
+*/
+
 
 
