@@ -16,13 +16,18 @@ function computerPlay() {
 // The function used for the user to input their selection and be returned into the playerPlay() function caller. 
 function playerPlay() {
     let userInput = prompt('Please enter your battle sign: Rock, Paper, or Scissor');
-        if (userInput.toLowerCase() == 'rock') {
+        if (userInput === null) {
+            alert('Bye bye')
+        }
+          else if (userInput.toLowerCase() == 'rock') {
             return'rock';
         } else if (userInput.toLowerCase() == 'paper') {
             return'paper';
         } else if (userInput.toLowerCase() == 'scissor') {
             return'scissor';
-        }
+        } else {
+            alert('Boohoo! You\'re no fun!');
+        } 
     }
 
 // This function is used to play a round of RPS, it uses the parameters playerSelection and computerSelection to receive data which is then relayed to the switch statement. 
@@ -84,5 +89,12 @@ if (finalScore > 0) {
     alert('You scored a tie!');
 }
 }
-
-//let numberOfRounds = prompt('How many rounds of Rock, Paper, Scissors would you like to play?')
+// Prompt to run game();
+let playGame = prompt(`Would you like to play a game? Type 'Yes'`)
+if (playGame === null) {
+    alert('ABORT ABORT ABORT');
+} else if (playGame.toLowerCase() == 'yes') {
+        game();
+    } else {
+        alert('Boohoo! You\'re no fun!');
+    }
