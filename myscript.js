@@ -58,7 +58,7 @@ function playRound(playerSelection, computerSelection) {
         case (playerSelection == 'rock' && computerSelection == 'scissor'):
         return('Rock beats Scissor! You win!');
         case (playerSelection == 'rock' && computerSelection == 'paper'):
-        return('Rock loses to Paper. You lose!');
+        return('Rock loses to Paper! You lose!');
         case playerSelection == 'rock' && computerSelection == 'rock':
         return('Rock ties with Rock. It\'s a tie!');
         case (playerSelection == 'paper' && computerSelection == 'rock'):
@@ -76,23 +76,65 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-console.log(playRound(playerPlay(), computerPlay())); // we can just use the playerPlay() function because it's going to return one of the strings we desire for in the parameter of playRound.
-console.log(playRound(playerPlay(), computerPlay()));
+//console.log(playRound(playerPlay(), computerPlay())); // we can just use the playerPlay() function because it's going to return one of the strings we desire for in the parameter of playRound.
 
 
-/*function playSingleRound() {
-    console.log(playRounds);
+
+function playSingleRound() {
+    return(playRound(playerPlay(), computerPlay()));
 }
-let playSingle = playSingleRound(); */
+//let playSingle = playSingleRound();
+
+
 // Display a message declaring who the winner of the round is. Done.
 
 // Create a new function called game() where we can run the RPS game 5 times and have it keep track of the score and declare a winner at the end.
-/*
+
+/*function game() {
+    playSingleRound(), 
+    playSingleRound() 
+} */
+
+/*let result = playSingleRound();
+console.log(result);
+let result2 = playSingleRound();
+console.log(result2);
+let score = 1
+if (result === 'Rock beats Scissor! You win!' || result2 === 'Rock beats Scissor! You win!') {
+    score++;
+} else if (result === 'Rock loses to Paper. You lose!' || result2 === 'Rock loses to Paper. You lose!') {
+    score--;
+} 
+console.log(score); */
+
+/*let result = playSingleRound();
+console.log(result);
+let score = 1 */
+
 function game() {
-    
+let result = playSingleRound();
+console.log(result);
+let score = 0
+switch (true) {
+    case(result === 'Rock beats Scissor! You win!' || result === 'Paper beats Rock! You win!' || result === 'Scissor beats Paper! You win!'):
+    score++;
+    break;
+    case(result === 'Rock loses to Paper! You lose!' || result === 'Paper loses to Scissor! You lose!' || result === 'Scissor loses to Rock! You lose!'):
+    score--;
 }
-game();
-*/
+console.log(score);
+return score;
+}
+let finalScore = game() + game() + game() +game() + game();
+console.log(finalScore); 
+if (finalScore > 0) {
+    alert(`You won with a score of ${finalScore}!`);
+} else if (finalScore < 0) {
+    alert(`You lost with a score of ${finalScore}!`);
+} else {
+    alert('You scored a tie!');
+}
+
 
 
 
