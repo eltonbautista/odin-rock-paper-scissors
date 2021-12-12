@@ -1,30 +1,4 @@
-// Make a prompt where the user can input their choice of Rock, Paper, or Scissor.
-// const playerSelection = prompt('Please enter a selection of Rock, Paper, or Scissor.')
-// playerSelection.toLowerCase;
-// Figure out how to make it so that the computer knows Rock > Scissor , Scissor > Paper, Paper > Rock. 
-/* It looks like I was just over complicating things here by trying to add a prompt to it. Will create that in the future. 
-const rock = 'rock';
-const paper = 'paper';
-const scissor = 'scissor';
-
-let rockBeat = rock > scissor || rock === rock;
-let paperBeat = paper > rock || paper === paper;
-let scissorBeat = scissor > paper || scissor === scissor;
-
-if (rockBeat === true) {
-    return ('You win! Rock beats Scissor');
-} else {
-    return ('It\'s a tie, rock doesn\'t beat rock.');
-} */
-
-/*
-let rockLength = rock.length; // 4
-let paperLength = paper.length; // 5
-let scissorLength = scissor.length; // 7
-*/
-
-// Have the computer randomly throw out Rock, Paper, or Scissor, we will call this function computerPlay. Done.
-
+// The function used for the computer to throw a random selection, the selection is returned to the computerPlay() function caller.
 function computerPlay() {
     let test = 3;
     function getRandomChoice() {
@@ -39,6 +13,7 @@ function computerPlay() {
         return ('scissor');
     } 
 } 
+// The function used for the user to input their selection and be returned into the playerPlay() function caller. 
 function playerPlay() {
     let userInput = prompt('Please enter your battle sign: Rock, Paper, or Scissor');
         if (userInput.toLowerCase() == 'rock') {
@@ -49,9 +24,9 @@ function playerPlay() {
             return'scissor';
         }
     }
-//Have the user's input go against the computer's random choice and decide on a winner, this will be done through a function called playRound(),
-//which will have two paramaters: playerSelection and computerSelection. Done, now I have to make playerSelection case insensitive.
 
+// This function is used to play a round of RPS, it uses the parameters playerSelection and computerSelection to receive data which is then relayed to the switch statement. 
+// The switch statements returns a string value depending on the outcome of the round.  
 function playRound(playerSelection, computerSelection) {
 
     switch(true) {
@@ -75,43 +50,14 @@ function playRound(playerSelection, computerSelection) {
         return('Scissor ties with Scissor. It\'s a tie!');
     }
 }
-
-//console.log(playRound(playerPlay(), computerPlay())); // we can just use the playerPlay() function because it's going to return one of the strings we desire for in the parameter of playRound.
-
-
-
+// This function is here so that I can return the value of playRound() to this playSingleRound() function. 
+// This returned value is then stored inside the result variable so that it can be used in the game() function.
 function playSingleRound() {
     return(playRound(playerPlay(), computerPlay()));
 }
-//let playSingle = playSingleRound();
 
-
-// Display a message declaring who the winner of the round is. Done.
-
-// Create a new function called game() where we can run the RPS game 5 times and have it keep track of the score and declare a winner at the end.
-
-/*function game() {
-    playSingleRound(), 
-    playSingleRound() 
-} */
-
-/*let result = playSingleRound();
-console.log(result);
-let result2 = playSingleRound();
-console.log(result2);
-let score = 1
-if (result === 'Rock beats Scissor! You win!' || result2 === 'Rock beats Scissor! You win!') {
-    score++;
-} else if (result === 'Rock loses to Paper. You lose!' || result2 === 'Rock loses to Paper. You lose!') {
-    score--;
-} 
-console.log(score); */
-
-/*let result = playSingleRound();
-console.log(result);
-let score = 1 */
-
-function game() {
+// The scoreKeeper() function is used to keep score of the playSingleRound() function.
+function scoreKeeper() {
 let result = playSingleRound();
 console.log(result);
 let score = 0
@@ -125,7 +71,10 @@ switch (true) {
 console.log(score);
 return score;
 }
-let finalScore = game() + game() + game() +game() + game();
+// The game() function runs the game however many times the scoreKeeper() function is called and then totals the score using the finalScore variable.
+// An alert is displayed declaring the winner of the game.
+function game() {
+let finalScore = scoreKeeper() + scoreKeeper() + scoreKeeper() +scoreKeeper() + scoreKeeper();
 console.log(finalScore); 
 if (finalScore > 0) {
     alert(`You won with a score of ${finalScore}!`);
@@ -134,7 +83,6 @@ if (finalScore > 0) {
 } else {
     alert('You scored a tie!');
 }
+}
 
-
-
-
+//let numberOfRounds = prompt('How many rounds of Rock, Paper, Scissors would you like to play?')
