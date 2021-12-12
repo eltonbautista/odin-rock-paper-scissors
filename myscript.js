@@ -76,8 +76,7 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-//const playerSelection = "rock".toLowerCase(); // I only used lowercase strings in all of my input and output of 'rock', 'paper', 'scissor' so I just needed to make sure my input here is all lowercase.
-console.log(playRound(playerPlay(), computerPlay()));
+console.log(playRound(playerPlay(), computerPlay())); // we can just use the playerPlay() function because it's going to return one of the strings we desire for in the parameter of playRound.
 console.log(playRound(playerPlay(), computerPlay()));
 
 
