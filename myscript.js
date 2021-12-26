@@ -1,3 +1,4 @@
+
 // The function used for the computer to throw a random selection, the selection is returned to the computerPlay() function caller.
 function computerPlay() {
     let test = 3;
@@ -13,23 +14,18 @@ function computerPlay() {
         return ('scissor');
     } 
 } 
-// The function used for the user to input their selection and be returned into the playerPlay() function caller. 
-function playerPlay() {
-    let userInput = prompt('Please enter your battle sign: Rock, Paper, or Scissor');
-        if (userInput === null) {
-            alert('Bye bye')
-        }
-          else if (userInput.toLowerCase() == 'rock') {
-            return'rock';
-        } else if (userInput.toLowerCase() == 'paper') {
-            return'paper';
-        } else if (userInput.toLowerCase() == 'scissor') {
-            return'scissor';
-        } else {
-            alert('Boohoo! You\'re no fun!');
-        } 
-    }
 
+// The function used for the user to input their selection and be returned into the playerPlay() function caller. 
+const playerSelection = function(choice) {
+        if (choice === rockButton) {
+            return('rock');
+        } else if (choice === paperButton) {
+            return('paper');
+        } else if (choice === scissorButton) {
+            return('scissor');
+        }
+    }
+    
 // This function is used to play a round of RPS, it uses the parameters playerSelection and computerSelection to receive data which is then relayed to the switch statement. 
 // The switch statements returns a string value depending on the outcome of the round.  
 function playRound(playerSelection, computerSelection) {
@@ -58,7 +54,7 @@ function playRound(playerSelection, computerSelection) {
 // This function is here so that I can return the value of playRound() to this playSingleRound() function. 
 // This returned value is then stored inside the result variable so that it can be used in the game() function.
 function playSingleRound() {
-    return(playRound(playerPlay(), computerPlay()));
+    console.log(playRound(playerSelection(), computerPlay()));
 }
 
 // The scoreKeeper() function is used to keep score of the playSingleRound() function.
@@ -78,6 +74,7 @@ return score;
 }
 // The game() function runs the game however many times the scoreKeeper() function is called and then totals the score using the finalScore variable.
 // An alert is displayed declaring the winner of the game.
+/*
 function game() {
 let finalScore = scoreKeeper() + scoreKeeper() + scoreKeeper() +scoreKeeper() + scoreKeeper();
 console.log(finalScore); 
@@ -89,7 +86,8 @@ if (finalScore > 0) {
     alert('You scored a tie!');
 }
 }
-// Prompt to run game();
+*/
+/* Prompt to run game();
 let playGame = prompt(`Would you like to play a game? Type 'Yes'`)
 if (playGame === null) {
     alert('ABORT ABORT ABORT');
@@ -98,3 +96,41 @@ if (playGame === null) {
     } else {
         alert('Boohoo! You\'re no fun!');
     }
+*/
+
+
+const container = document.querySelector('#container');
+
+const rpsContainer = document.createElement('div');
+rpsContainer.classList.add('rpsContainer');
+container.appendChild(rpsContainer)
+
+
+const rockButton = document.createElement('button');
+rockButton.classList.add('rockButton');
+rockButton.textContent = 'ROCK';
+rpsContainer.appendChild(rockButton);
+rockButton.addEventListener('click', () => {
+    playerSelection(rockButton);
+    console.log(playRound(playerSelection(rockButton), computerPlay()));
+});
+
+const paperButton = document.createElement('button');
+rockButton.classList.add('paperButton');
+paperButton.textContent = 'PAPER';
+rpsContainer.appendChild(paperButton);
+paperButton.addEventListener('click', () => {
+    playerSelection(paperButton);
+    console.log(playRound(playerSelection(paperButton), computerPlay()));
+});
+
+const scissorButton = document.createElement('button');
+rockButton.classList.add('scissorButton')
+scissorButton.textContent = 'SCISSOR';
+rpsContainer.appendChild(scissorButton);
+scissorButton.addEventListener('click', () => {
+    playerSelection(scissorButton);
+    console.log(playRound(playerSelection(scissorButton), computerPlay()));
+});
+
+
