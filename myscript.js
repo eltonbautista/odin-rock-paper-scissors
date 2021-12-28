@@ -35,32 +35,27 @@ function playRound(playerSelection, computerSelection) {
         return('Rock beats Scissor! You win!');
         case (playerSelection == 'rock' && computerSelection == 'paper'):
         return('Rock loses to Paper! You lose!');
-        case playerSelection == 'rock' && computerSelection == 'rock':
-        return('Rock ties with Rock. It\'s a tie!');
         case (playerSelection == 'paper' && computerSelection == 'rock'):
         return('Paper beats Rock! You win!');
         case (playerSelection == 'paper' && computerSelection == 'scissor'):
         return('Paper loses to Scissor! You lose!');
-        case (playerSelection == 'paper' && computerSelection == 'paper'):
-        return('Paper ties with Paper. It\'s a tie!');
         case (playerSelection == 'scissor' && computerSelection == 'paper'):
         return('Scissor beats Paper! You win!');
         case (playerSelection == 'scissor' && computerSelection == 'rock'):
         return('Scissor loses to Rock! You lose!');
-        case (playerSelection == 'scissor' && computerSelection == 'scissor'):
-        return('Scissor ties with Scissor. It\'s a tie!');
+        case (playerSelection === computerSelection): 
+        return('It\'s a tie!');
     }
 }
 // This function is here so that I can return the value of playRound() to this playSingleRound() function. 
 // This returned value is then stored inside the result variable so that it can be used in the game() function.
-function playSingleRound() {
-    console.log(playRound(playerSelection(), computerPlay()));
+const playSingleRound = function(choice) {
+    return(playRound(playerSelection(choice), computerPlay()));  
 }
 
-// The scoreKeeper() function is used to keep score of the playSingleRound() function.
-function scoreKeeper() {
-let result = playSingleRound();
-console.log(result);
+// The scoreKeeper() function is used to keep a single point score of the playSingleRound() function.
+const scoreKeeper = function(choice) {
+let result = playSingleRound(choice);
 let score = 0
 switch (true) {
     case(result === 'Rock beats Scissor! You win!' || result === 'Paper beats Rock! You win!' || result === 'Scissor beats Paper! You win!'):
@@ -70,8 +65,11 @@ switch (true) {
     score--;
 }
 console.log(score);
+document.getElementById('results-display').innerHTML = result;
 return score;
 }
+// if scoreKeeper() return +1 (player win) then add 1 to playerScore, if scoreKeeper() return -1 (computer win) then add 1 to computerScore, if tie(0), no addition. 
+// going to need to create a for loop for this ^, i = 0; i <= 5; i++ 
 // The game() function runs the game however many times the scoreKeeper() function is called and then totals the score using the finalScore variable.
 // An alert is displayed declaring the winner of the game.
 /*
@@ -110,27 +108,43 @@ const rockButton = document.createElement('button');
 rockButton.classList.add('rockButton');
 rockButton.textContent = 'ROCK';
 rpsContainer.appendChild(rockButton);
-rockButton.addEventListener('click', () => {
-    playerSelection(rockButton);
-    console.log(playRound(playerSelection(rockButton), computerPlay()));
+
+const rockScore = function () {
+    rockButton.addEventListener('click', () => {
+        scoreKeeper(rockButton);
 });
+} 
 
 const paperButton = document.createElement('button');
 rockButton.classList.add('paperButton');
 paperButton.textContent = 'PAPER';
 rpsContainer.appendChild(paperButton);
-paperButton.addEventListener('click', () => {
-    playerSelection(paperButton);
-    console.log(playRound(playerSelection(paperButton), computerPlay()));
+
+const paperScore = function () {
+    paperButton.addEventListener('click', () => {
+        scoreKeeper(paperButton);
 });
+}
 
 const scissorButton = document.createElement('button');
 rockButton.classList.add('scissorButton')
 scissorButton.textContent = 'SCISSOR';
 rpsContainer.appendChild(scissorButton);
-scissorButton.addEventListener('click', () => {
-    playerSelection(scissorButton);
-    console.log(playRound(playerSelection(scissorButton), computerPlay()));
+
+const scissorScore = function() {
+    scissorButton.addEventListener('click', () => {
+        scoreKeeper(scissorButton);
 });
+}
+
+function scoreDisplay() {
+    rockScore();
+    paperScore();
+    scissorScore();
+}
+scoreDisplay();
+
+const resultsDisplay = document.querySelector('#results-display');
+document.getElementById('results-display').innerHTML = ''
 
 
