@@ -133,14 +133,14 @@ const playAgain = function() {
         document.getElementById('score-display-human').innerText = '', 
         document.querySelector('#human-message').innerText = '',
         document.getElementById('score-display-computer').innerText = '',
-        document.querySelector('#computer-message').innerText = '',
+        document.querySelector('#human-message').innerText = '',
         document.getElementById('play-again').style.visibility = 'hidden');
     } else {}
     if (computerScore === 5) {
         return (humanScore = 0, computerScore = 0,
         document.getElementById('results-display').innerText = '',
         document.getElementById('score-display-human').innerText = '', 
-        document.querySelector('#human-message').innerText = '',
+        document.querySelector('#computer-message').innerText = '',
         document.getElementById('score-display-computer').innerText = '',
         document.querySelector('#computer-message').innerText = '',
         document.getElementById('play-again').style.visibility = 'hidden');
