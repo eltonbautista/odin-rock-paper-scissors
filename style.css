@@ -74,3 +74,11 @@ body {
     color: rgb(9, 13, 231);
 }
 
+/* Encouraging Message */
+
+#human-message {
+    position: absolute;
+}
+#computer-message {
+    position:absolute;
+}
