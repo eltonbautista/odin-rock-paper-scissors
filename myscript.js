@@ -43,8 +43,6 @@ function playRound(playerSelection, computerSelection) {
         return('It\'s a tie!');
     }
 }
-document.getElementById('human-message').style.visibility = 'hidden';
-document.getElementById('computer-message').style.visibility = 'hidden';
 
 
 const humanScoreKeeper = function(humanScore) {
@@ -63,7 +61,6 @@ const humanScoreKeeper = function(humanScore) {
     alert('You have prevailed Human!');
     document.getElementById('play-again').style.visibility = 'visible';
 } 
-
 }
 
 const computerScoreKeeper = function(computerScore) {
@@ -144,7 +141,7 @@ const playAgain = function() {
         document.querySelector('#encouraging-message').innerText = '',
         document.getElementById('score-display-computer').innerText = '',
         document.querySelector('#encouraging-message').innerText = '',
-        document.getElementById('play-again').style.visibility = 'visible');
+        document.getElementById('play-again').style.visibility = 'hidden');
     } 
 }
 againBtn.addEventListener('click', playAgain);
